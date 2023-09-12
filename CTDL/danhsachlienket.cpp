@@ -177,20 +177,20 @@ void TimKiem(LIST l)
         cout << "Khong ton tai sinh vien co MSSV " << x << endl;
         break;
     case 2:
-        char searchName[30];
-        cout << "\nNhap Ho ten can tim: ";
-        cin.ignore(); // Loai bo ky tu new line trong buffer.
-        cin.getline(searchName, sizeof(searchName));
-        cout << endl
-             << "Ket qua tim kiem theo Ho ten:" << endl;
-        for (node *i = l.pHead; i != NULL; i = i->next)
+    char searchName[30];
+    cout << "\nNhap Ho ten can tim: ";
+    cin.ignore(); // Loai bo ky tu new line trong buffer.
+    cin.getline(searchName, sizeof(searchName));
+    cout << endl << "Ket qua tim kiem theo Ho ten:" << endl;
+    for (node *i = l.pHead; i != NULL; i = i->next)
+    {
+        // Sử dụng hàm strstr để kiểm tra xem searchName có tồn tại trong Họ tên của sinh viên không
+        if (strstr(i->info.HoTen, searchName) != NULL)
         {
-            if (strcmp(i->info.HoTen, searchName) == 0)
-            {
-                Xuat(i->info);
-            }
+            Xuat(i->info);
         }
-        break;
+    }
+    break;
     case 3:
         float searchScore;
         cout << "\nNhap Diem trung binh can tim: ";
@@ -355,7 +355,7 @@ int main()
         cout << "\n====== MENU ======\n";
         cout << "1. Nhap danh sach sinh vien\n";
         cout << "2. Xuat danh sach sinh vien\n";
-        cout << "3. Tim kiem sinh vien theo MSSV\n";
+        cout << "3. Tim kiem sinh vien\n";
         cout << "4. Them sinh vien\n";
         cout << "5. Xoa sinh vien\n";
         cout << "6: Sap xep theo diem trung binh\n";
